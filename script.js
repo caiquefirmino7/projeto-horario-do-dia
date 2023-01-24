@@ -1,30 +1,26 @@
-function atualizar(){
+function carregar(){
+    var msg = window.document.getElementById('msg')
     var img = window.document.getElementById('imagem')
-    var msg = window.document.querySelector('div#msg')
-    var data= new Date()
-    var hora=  data.toLocaleTimeString()
-    setInterval(atualizar,1)
+    var data = new Date()
+    var hora = data.getHours()
+   
     
- 
-    msg.innerHTML=` <strong>Agora são ${hora}</strong> <br>`
-
-    if (hora >= 4 ){
-        msg.innerHTML+=`<strong>Boa madrugada!</strong>`
-        img.src = 'imagens/madrugada.jpg'
-        document.body.style.background = '#2F4F4F'
-    } else if ( hora >= 12){
-        msg.innerHTML+=`<strong>Bom Dia!</strong>`
-        img.src = 'imagens/manha.jpg'
+    msg.innerHTML= `<strong>Agora são ${hora} horas</strong> <br> `
+    
+    if (hora>=0 && hora <12){
+        //Bom dia
+        img.src= './imagens/manha.jpg'
         document.body.style.background = '#e2cd9f'
-    } else if(hora >= 18){
-        msg.innerHTML+=`<strong>Boa tarde!</strong>`
-        img.src='imagens/tarde.jpg'
-        document.body.style.background='#FF8C00'
-    } else {
-        msg.innerHTML+=`<strong>Boa noite!</strong>`
-        img.src= 'imagens/noite.jpg'
-        document.body.style.background='#191970'
-        
+        msg.innerText+= `Bom dia!`
+    } else if (hora >= 12 && hora <18) {
+        //boa tarde
+        img.src= '.imagens/tarde.jpg'
+        document.body.style.background = '#FF8C00'
+        msg.innerText+= `Boa tarde!`
+    } else{
+        //boa noite
+        img.src= 'noite.jpg'
+        document.body.style.background = '#191970'
+        msg.innerText+= `Boa noite!`
     }
-    
-}  
+}
